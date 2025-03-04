@@ -24,10 +24,36 @@ const closeRoom = () => {
   roomSelection.style.display = "none";
 };
 
-// to Call 
+// to Call
 const startBtn = () => {
   closeMenu();
   showRoom();
+};
+
+window.joinRoom = function (roomName) {
+  const playerName = localStorage.getItem("userName"); // Get the player's name from localStorage
+
+  if (!playerName) {
+    // alert("You must be logged in to join a room.");
+    return;
+  }
+
+  // Send a POST request to the backend
+  axios.post("/join-room", {
+      roomName: roomName,
+      playerName: playerName,
+    })
+    .then((response) => {
+      console.log(response.data.message); // Log the success message
+      // alert(`You joined room: ${roomName}`);
+    })
+    .catch((error) => {
+      console.error(
+        "Error joining room:",
+        error.response?.data?.error || error.message
+      );
+      // alert("Failed to join the room. Please try again.");
+    });
 };
 
 

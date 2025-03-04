@@ -64,6 +64,20 @@ app.get("/oauth-callback", ({ query: { code } }, res) => {
     });
 });
 
+
+
+// Add this route to your existing backend code
+app.post("/join-room", express.json(), (req, res) => {
+  const { roomName, playerName } = req.body;
+
+  if (!roomName || !playerName) {
+    return res.status(400).json({ error: "Room name and player name are required" });
+  }
+  
+  console.log(`[log] : Player[${playerName}] joined room[${roomName}]`);
+  res.json({ success: true, message: `Player ${playerName} joined room ${roomName}` });
+});
+
 app.listen(3000);
 // eslint-disable-next-line no-console
 console.log("App listening http://localhost:3000/");
