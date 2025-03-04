@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/thayorch/204114-Project/">
-    <img src="logo.png" alt="Logo" width="80" height="80">
+    <img src="Logo.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">Pew Pew!</h3>
   <p align="center">
